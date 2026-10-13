@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Listing Studio creates polished marketplace listings without sending your product data to a server.">
+  <title>Listing Studio — private product copy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Listing Studio home">
+      <span class="brand-mark">✦</span>
+      <span>listing<span class="brand-accent">studio</span></span>
+    </a>
+
+    <div class="topbar-actions">
+      <span class="privacy-pill">
+        <span class="status-dot"></span>
+        private by default
+      </span>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Switch to dark mode"
+        title="Switch theme"
+      >
+        <span class="theme-icon" id="themeIcon">☾</span>
+      </button>
+
+      <button
+        class="icon-button"
+        id="settingsButton"
+        aria-label="Open settings"
+        title="AI settings"
+      >
+        ⚙
+      </button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">FOR INDEPENDENT SELLERS</p>
+
+        <h1>
+          Turn “I have this”
+          <br>
+          <em>into “sold.”</em>
+        </h1>
+
+        <p class="hero-copy">
+          Create marketplace-ready listings in seconds.
+          Your product details stay in your browser — and optionally
+          run through your own local AI.
+        </p>
+      </div>
+
+      <div class="hero-note">
+        <span class="note-icon">↗</span>
+        <span>Made for Etsy, eBay,<br>Depop & beyond.</span>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="step-label">01 / TELL US ABOUT IT</p>
+            <h2>Your item</h2>
+          </div>
+
+          <span class="required-note">* required</span>
+        </div>
+
+        <form id="listingForm">
+          <div class="photo-drop" id="photoDrop">
+            <input type="file" id="photoInput" accept="image/*" hidden>
+
+            <div class="photo-placeholder" id="photoPlaceholder">
+              <span class="upload-icon">＋</span>
+
+              <span>
+                <strong>Add a product photo</strong>
+                <small>Drag & drop or click to browse</small>
+              </span>
+            </div>
+
+            <img
+              id="photoPreview"
+              class="photo-preview hidden"
+              alt="Product preview"
+            >
+
+            <button
+              type="button"
+              class="remove-photo hidden"
+              id="removePhoto"
+              aria-label="Remove photo"
+            >
+              ×
+            </button>
+          </div>
+
+          <label class="field-label" for="productName">
+            What are you selling? <span>*</span>
+          </label>
+
+          <input
+            class="text-input"
+            id="productName"
+            name="productName"
+            placeholder="e.g. Hand-thrown speckled ceramic mug"
+            required
+          >
+
+          <div class="field-grid">
+            <div>
+              <label class="field-label" for="category">Category</label>
+
+              <select class="text-input" id="category" name="category">
+                <option value="Home & living">Home & living</option>
+                <option value="Fashion & accessories">Fashion & accessories</option>
+                <option value="Art & collectibles">Art & collectibles</option>
+                <option value="Jewelry">Jewelry</option>
+                <option value="Vintage">Vintage</option>
+                <option value="Digital product">Digital product</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="field-label" for="condition">Condition</label>
+
+              <select class="text-input" id="condition" name="condition">
+                <option value="Brand new">Brand new</option>
+                <option value="Like new">Like new</option>
+                <option value="Good vintage condition">Good vintage condition</option>
+                <option value="Pre-owned">Pre-owned</option>
+                <option value="Made to order">Made to order</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="field-label" for="details">
+            The good stuff <span>*</span>
+          </label>
+
+          <textarea
+            class="text-input textarea"
+            id="details"
+            name="details"
+            placeholder="Materials, size, color, story, what makes it special..."
+            required
+          ></textarea>
+
+          <div class="char-count">
+            <span id="charCount">0</span> / 500
+          </div>
+
+          <div class="field-grid">
+            <div>
+              <label class="field-label" for="price">
+                Price <span>*</span>
+              </label>
+
+              <div class="input-prefix">
+                <span>$</span>
+                <input
+                  class="text-input"
+                  id="price"
+                  name="price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="38"
+                  required
+                >
+              </div>
+            </div>
+
+            <div>
+              <label class="field-label" for="platform">
+                Where will it live?
+              </label>
+
+              <select class="text-input" id="platform" name="platform">
+                <option value="Etsy">Etsy</option>
+                <option value="eBay">eBay</option>
+                <option value="Depop">Depop</option>
+                <option value="Shopify">Shopify</option>
+                <option value="Instagram">Instagram</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="tone-row">
+            <div>
+              <label class="field-label">Voice</label>
+
+              <div
+                class="segmented"
+                role="group"
+                aria-label="Listing voice"
+              >
+                <span class="segment-slider" aria-hidden="true"></span>
+
+                <button
+                  class="segment active"
+                  type="button"
+                  data-tone="Warm"
+                >
+                  Warm
+                </button>
+
+                <button
+                  class="segment"
+                  type="button"
+                  data-tone="Playful"
+                >
+                  Playful
+                </button>
+
+                <button
+                  class="segment"
+                  type="button"
+                  data-tone="Minimal"
+                >
+                  Minimal
+                </button>
+              </div>
+
+              <input type="hidden" id="tone" value="Warm">
+            </div>
+          </div>
+
+          <button class="primary-button" type="submit">
+            <span class="button-spark">✦</span>
+            Generate my listing
+            <span class="button-arrow">→</span>
+          </button>
+
+          <p class="form-footnote">
+            <span>⌘</span>
+            Runs locally in your browser. No account needed.
+          </p>
+        </form>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="panel-heading output-heading">
+          <div>
+            <p class="step-label">02 / MAKE IT SHINE</p>
+            <h2>Your listing</h2>
+          </div>
+
+          <span class="ai-badge">
+            <span class="status-dot"></span>
+            <span id="aiModeLabel">local fallback</span>
+          </span>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-orbit">
+            <span>✦</span>
+          </div>
+
+          <h3>Your words, but better.</h3>
+
+          <p>
+            Fill in the details and we’ll shape them into a listing
+            that sounds like you — not a robot.
+          </p>
+
+          <div class="empty-tip">
+            <span>TIP</span>
+            Specific details make copy feel human.
+          </div>
+        </div>
+
+        <div class="result hidden" id="result">
+          <div class="result-toolbar">
+            <span class="generated-label">
+              <span class="sparkle">✦</span>
+              Generated just now
+            </span>
+
+            <div class="toolbar-actions">
+              <button class="text-button" id="regenerateButton">
+                ↻ Regenerate
+              </button>
+
+              <button class="copy-button" id="copyButton">
+                Copy all <span>⧉</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="output-block title-block">
+            <div class="block-label">
+              TITLE
+              <span>· optimized for <span id="platformLabel">Etsy</span></span>
+            </div>
+
+            <div
+              class="editable-output title-output"
+              id="titleOutput"
+              contenteditable="true"
+              spellcheck="true"
+            ></div>
+
+            <div class="output-meta">
+              <span id="titleCount">0</span>/140 characters
+            </div>
+          </div>
+
+          <div class="output-block">
+            <div class="block-label">
+              DESCRIPTION
+              <button class="mini-copy" data-copy="descriptionOutput">
+                Copy
+              </button>
+            </div>
+
+            <div
+              class="editable-output description-output"
+              id="descriptionOutput"
+              contenteditable="true"
+              spellcheck="true"
+            ></div>
+          </div>
+
+          <div class="output-block">
+            <div class="block-label">
+              TAGS
+              <span>· searchable keywords</span>
+            </div>
+
+            <div class="tag-list" id="tagList"></div>
+          </div>
+
+          <div class="output-block price-suggestion">
+            <div class="block-label">PRICE CHECK</div>
+
+            <div class="price-line">
+              <strong id="priceOutput">$38</strong>
+              <span id="priceAdvice">Feels right for this category</span>
+            </div>
+          </div>
+
+          <div class="local-note">
+            <span>⌁</span>
+            Nothing was uploaded. This listing was drafted in your browser.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="how-it-works">
+      <div class="section-intro">
+        <p class="eyebrow">WHY LISTING STUDIO?</p>
+
+        <h2>
+          Your side hustle
+          <br>
+          <em>deserves better tools.</em>
+        </h2>
+      </div>
+
+      <div class="benefits">
+        <article>
+          <span class="benefit-number">01</span>
+          <h3>Your data stays yours.</h3>
+          <p>
+            Product details stay in this browser. Connect Ollama only
+            when you want a local open-weight model to polish them.
+          </p>
+        </article>
+
+        <article>
+          <span class="benefit-number">02</span>
+          <h3>Good copy, fast.</h3>
+          <p>
+            Go from blank page to a complete title, description,
+            tags, and price nudge before your coffee gets cold.
+          </p>
+        </article>
+
+        <article>
+          <span class="benefit-number">03</span>
+          <h3>Make it sound like you.</h3>
+          <p>
+            Pick a voice, edit every word, and keep the final call yours.
+            AI should be a collaborator, not a black box.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>LISTING STUDIO © 2025</span>
+    <span>OPEN BY DESIGN <span class="footer-star">✦</span></span>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="settingsModal">
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="settingsTitle"
+    >
+      <button
+        class="modal-close"
+        id="closeSettings"
+        aria-label="Close settings"
+      >
+        ×
+      </button>
+
+      <p class="eyebrow">OPTIONAL POWER-UP</p>
+
+      <h2 id="settingsTitle">Use your own AI.</h2>
+
+      <p class="modal-copy">
+        Listing Studio works offline with its built-in copy engine.
+        If Ollama is installed, you can connect a local open-weight model
+        for more nuanced results — your data still never leaves your computer.
+      </p>
+
+      <label class="field-label" for="ollamaEndpoint">
+        Ollama endpoint
+      </label>
+
+      <input
+        class="text-input"
+        id="ollamaEndpoint"
+        value="http://localhost:11434/api/generate"
+      >
+
+      <label class="field-label" for="ollamaModel">
+        Model name
+      </label>
+
+      <input
+        class="text-input"
+        id="ollamaModel"
+        value="llama3.2"
+      >
+
+      <div class="ollama-help">
+        Install Ollama from <strong>ollama.com</strong>, then run
+        <code>ollama run llama3.2</code>.
+      </div>
+
+      <div class="modal-actions">
+        <button class="secondary-button" id="testConnection">
+          Test connection
+        </button>
+
+        <button class="primary-button small-button" id="saveSettings">
+          Save settings
+        </button>
+      </div>
+
+      <p class="connection-status" id="connectionStatus" role="status"></p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
